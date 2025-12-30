@@ -17,7 +17,7 @@ if __name__ == "__main__":
     Y = df["diagnosis"].to_numpy()
     X = df.drop("diagnosis", axis=1) 
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, stratify=Y)  
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, stratify=Y, random_state=5)  
 
 
     
@@ -29,7 +29,10 @@ if __name__ == "__main__":
     acc_score = model.score(X_test, Y_test) 
     print(acc_score) 
 
-
+# first test 74 
+# second test 79 
+# third test 72 
+# forth test 73
 
 
      
