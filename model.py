@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split 
 from sklearn.neighbors import KNeighborsClassifier  
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler 
 
 if __name__ == "__main__": 
 
@@ -29,10 +29,7 @@ if __name__ == "__main__":
     acc_score = model.score(X_test, Y_test) 
     print(acc_score) 
 
-# first test 74 
-# second test 79 
-# third test 72 
-# forth test 73
+
 
 
      
