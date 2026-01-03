@@ -1,4 +1,4 @@
-import matplotlib as mpl
+import matplotlib.pyplot as mpl
 import pandas as pd  
 import numpy as np
 from sklearn.model_selection import train_test_split 
@@ -23,15 +23,29 @@ if __name__ == "__main__":
 
     
 
-    model = KNeighborsClassifier() 
+    model = KNeighborsClassifier()  
 
-    model.fit(X_train, Y_train) 
+    model.fit(X_train, Y_train)
 
-    acc_score = model.score(X_test, Y_test) 
-    print(acc_score) 
+    Y_predicted = model.predict(X_test) 
 
+    matrix = confusion_matrix(Y_test, Y_predicted)  
     
+    truePos = matrix[0][0]
+    falsePos = matrix[0][1] 
 
+    falseNeg = matrix[1][0] 
+    trueNeg = matrix[1][1]  
+
+    trues = truePos + trueNeg 
+    falses = falsePos + falseNeg 
+
+    total = trues + falses 
+
+    percent_correct = trues/total
+
+    mpl.bar(["Got Correct", "Got Wrong"], [trues, falses]) 
+    mpl.show() 
 
      
 
