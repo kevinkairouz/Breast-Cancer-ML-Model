@@ -6,6 +6,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import StandardScaler  
 
+from sklearn.metrics import classification_report
+
 if __name__ == "__main__": 
 
     df = pd.read_csv("breast-cancer.csv") 
@@ -29,23 +31,15 @@ if __name__ == "__main__":
 
     Y_predicted = model.predict(X_test) 
 
-    matrix = confusion_matrix(Y_test, Y_predicted)  
+    # print(recall_score(Y_test, Y_predicted)) 
+    # print(precision_score(Y_test, Y_predicted)) 
+    # print()    
+   
+    # print(recall_score(Y_test, Y_predicted))
+
+    print(classification_report(Y_test, Y_predicted))
+
     
-    truePos = matrix[0][0]
-    falsePos = matrix[0][1] 
-
-    falseNeg = matrix[1][0] 
-    trueNeg = matrix[1][1]  
-
-    trues = truePos + trueNeg 
-    falses = falsePos + falseNeg 
-
-    total = trues + falses 
-
-    percent_correct = trues/total
-
-    mpl.bar(["Got Correct", "Got Wrong"], [trues, falses]) 
-    mpl.show() 
 
      
 
