@@ -26,6 +26,7 @@ EDITS: give each ML algorithm a random state = 42 to ensure consistency
 
 if __name__ == "__main__":  
 
+    modelNames = ["Random Forest", "Decision Tree", "K-Neighbors", "Logistic-Regression"]
 
     bestModel = None
 
@@ -68,7 +69,8 @@ if __name__ == "__main__":
     print(f"K Neighbors Score is {KN_model.best_score_} with {KN_model.best_params_}") 
     print(f"Logsitic Regression score {LR_model.best_score_} with {LR_model.best_params_ }")
 
-    
+    mpl.bar([modelNames], [DT_model.best_score_, RF_model.best_score_, KN_model.best_score_, LR_model.best_score_]) 
+    mpl.show() 
 
     
 
