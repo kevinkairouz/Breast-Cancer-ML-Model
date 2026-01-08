@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
   
 
-    df = pd.read_csv("model/breast-cancer.csv")  
+    df = pd.read_csv("breast-cancer.csv")  
     df = df.replace("M", "1") 
     df = df.replace("B", "0") 
     df = df.astype({"diagnosis": int}) 
