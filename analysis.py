@@ -7,7 +7,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier 
 from sklearn.neighbors import KNeighborsClassifier 
 from sklearn.metrics import classification_report 
-from sklearn.model_selection import GridSearchCV  
+from sklearn.model_selection import GridSearchCV 
+from sklearn.model_selection import RandomizedSearchCV 
 from sklearn.model_selection import train_test_split
 import numpy as np 
 
@@ -21,7 +22,7 @@ import numpy as np
 
 if __name__ == "__main__": 
 
-    scores = np.array([])  
+  
 
     df = pd.read_csv("breast-cancer.csv")  
     df = df.replace("M", "1") 
@@ -29,7 +30,7 @@ if __name__ == "__main__":
     df = df.astype({"diagnosis": int}) 
     df = df.drop("id", axis = 1)
 
-    Y = df[["diagnosis"]] 
+    Y = df["diagnosis"] 
     X = df.drop("diagnosis", axis = 1) 
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, stratify=Y, random_state=42) 
@@ -45,10 +46,21 @@ if __name__ == "__main__":
     LR_params = {"C": [1,5,15,50,100]} 
 
 
-    RF_model = GridSearchCV(RF, RF_params) 
-    DT_model = GridSearchCV(DT, DT_params) 
-    KN_model = GridSearchCV(KN, KN_params) 
-    LR_model = GridSearchCV(LR, LR_params)
+    RF_model = RandomizedSearchCV(RF, RF_params) 
+    DT_model = RandomizedSearchCV(DT, DT_params) 
+    KN_model = RandomizedSearchCV(KN, KN_params) 
+    LR_model = RandomizedSearchCV(LR, LR_params) 
+
+    RF_model.fit(X_train, Y_train) 
+    DT_model.fit(X_train, Y_train) 
+    KN_model.fit(X_train, Y_train) 
+    LR_model.fit(X_train, Y_train) 
+
+
+
+
+
+    
 
 
 
