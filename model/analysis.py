@@ -11,15 +11,14 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RandomizedSearchCV 
 from sklearn.model_selection import train_test_split 
 from sklearn.metrics import recall_score 
-from sklearn.metrics import precision_score 
+from sklearn.metrics import precision_score
+# from sklearn.metrics import precision_score
+
 
 #TODO  
 """ 
-EDITS: give each ML algorithm a random state = 42 to ensure consistency
  
-1) compare the precision and recall among the models and plot it on bar chart 
-2) compare the score/accraucy and plot it on the bar chart -- Completed X 
-3) if possible compare each model variation using subplots of the precision, recall, score/accuracy
+1) use subplot for 4 bar charts one for Precision, Another for recall, another for acc/score, another for something else TBD  
 """
 
 if __name__ == "__main__":  
@@ -60,7 +59,12 @@ if __name__ == "__main__":
     RF_model.fit(X_train, Y_train) 
     DT_model.fit(X_train, Y_train) 
     KN_model.fit(X_train, Y_train) 
-    LR_model.fit(X_train, Y_train)  
+    LR_model.fit(X_train, Y_train) 
+
+    Y_pred_RF = RF_model.predict(X_test)
+    Y_pred_DT = DT_model.predict(X_test) 
+    Y_pred_KN = KN_model.predict(X_test)
+    Y_pred_LR = LR_model.predict(X_test)
 
     print(f"Decision Tree Score: {DT_model.best_score_} with {DT_model.best_params_}")  
     print(f"Random Forest Score: {RF_model.best_score_} with {RF_model.best_params_}")
@@ -68,16 +72,32 @@ if __name__ == "__main__":
     print(f"Logsitic Regression score {LR_model.best_score_} with {LR_model.best_params_ }")
 
     bar_colors = ["red","black","green","orange"]
-    mpl.bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], color = bar_colors )
-
-    mpl.show()  
-
+    
+    
     bestModel = max(DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
 
     
+    rf_recall = recall_score(Y_test, Y_pred_RF)
+    dt_recall = recall_score(Y_test, Y_pred_DT) 
+    kn_recall = recall_score(Y_test, Y_pred_KN)
+    lr_recall = recall_score(Y_test, Y_pred_LR)
+
+
+    rf_prec = precision_score(Y_test, Y_pred_RF)
+    dt_prec = precision_score(Y_test, Y_pred_DT) 
+    kn_prec = precision_score(Y_test, Y_pred_KN)
+    lr_prec = precision_score(Y_test, Y_pred_LR)
 
 
 
+    fig, axis = mpl.subplots(1,3) 
+    axis[0].bar(["Random Forest", "Decision Tree", "KNeighbors", "LogisticReg"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], color = bar_colors ) 
+    axis[1].bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [rf_recall,dt_recall,kn_recall,lr_recall], color = bar_colors)
+    axis[2].bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [rf_prec,dt_prec,kn_prec,lr_prec], color = bar_colors) 
+    
+    mpl.show()  
+
+    
 
 
 
