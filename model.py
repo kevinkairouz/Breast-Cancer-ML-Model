@@ -1,7 +1,14 @@
 #using the model that performed the best 
-#printing out its score to the console 
+#printing out its score to the console  
 
-import pandas as pd  
+#importing analysis will allow me to use the most_accurate model and then print out its score 
+#and then allow for me to host it on api  
+
+#then can use html and css and js to give interactiveness and or console interactiveness 
+
+
+import pandas as pd   
+import analysis 
 from sklearn.model_selection import train_test_split 
 from sklearn.preprocessing import StandardScaler 
 from sklearn.model_selection import GridSearchCV 

@@ -46,7 +46,10 @@ if __name__ == "__main__":
 
 
     RF_model = GridSearchCV(RF, RF_params) 
-    
+    DT_model = GridSearchCV(DT, DT_params) 
+    KN_model = GridSearchCV(KN, KN_params) 
+    LR_model = GridSearchCV(LR, LR_params)
+
 
 
 
