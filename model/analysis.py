@@ -9,11 +9,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report 
 from sklearn.model_selection import GridSearchCV 
 from sklearn.model_selection import RandomizedSearchCV 
-from sklearn.model_selection import train_test_split
-
-
-
-
+from sklearn.model_selection import train_test_split 
+from sklearn.metrics import recall_score 
+from sklearn.metrics import precision_score 
 
 #TODO  
 """ 
@@ -69,8 +67,8 @@ if __name__ == "__main__":
     print(f"K Neighbors Score is {KN_model.best_score_} with {KN_model.best_params_}") 
     print(f"Logsitic Regression score {LR_model.best_score_} with {LR_model.best_params_ }")
 
-    bar_colors = ['tab:red', 'tab:blue', 'tab:black', 'tab:pink']
-    mpl.bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], colors = bar_colors )
+    bar_colors = ["red","black","green","orange"]
+    mpl.bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], color = bar_colors )
 
     mpl.show()  
 

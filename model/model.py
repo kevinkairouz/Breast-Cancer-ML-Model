@@ -26,11 +26,15 @@ import sqlite3 as sql
 
 if __name__ == "__main__": 
 
-    df = pd.read_csv("model/breast-cancer.csv") 
-    df = df.replace("M", "1") 
-    df = df.replace("B", "0") 
-    df = df.astype({"diagnosis": int}) 
-    df = df.drop("id", axis = 1)  
+    modelManager = analysis  
+
+    print(modelManager.bestModel)
+
+    # df = pd.read_csv("model/breast-cancer.csv") 
+    # df = df.replace("M", "1") 
+    # df = df.replace("B", "0") 
+    # df = df.astype({"diagnosis": int}) 
+    # df = df.drop("id", axis = 1)  
 
     # print(df.groupby("diagnosis")["diagnosis"].count()) done to see amount of M & B 
 
