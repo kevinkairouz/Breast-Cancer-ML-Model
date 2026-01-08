@@ -15,6 +15,7 @@ if __name__ == "__main__":
     df = df.drop("id", axis = 1)  
 
 
+    print(df.info())
 
 
 
