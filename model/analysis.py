@@ -10,7 +10,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV 
 from sklearn.model_selection import RandomizedSearchCV 
 from sklearn.model_selection import train_test_split
-import numpy as np  
+
 
 
 
@@ -20,7 +20,7 @@ import numpy as np
 EDITS: give each ML algorithm a random state = 42 to ensure consistency
  
 1) compare the precision and recall among the models and plot it on bar chart 
-2) compare the score/accraucy and plot it on the bar chart  
+2) compare the score/accraucy and plot it on the bar chart -- Completed X 
 3) if possible compare each model variation using subplots of the precision, recall, score/accuracy
 """
 
@@ -69,8 +69,12 @@ if __name__ == "__main__":
     print(f"K Neighbors Score is {KN_model.best_score_} with {KN_model.best_params_}") 
     print(f"Logsitic Regression score {LR_model.best_score_} with {LR_model.best_params_ }")
 
-    mpl.bar([modelNames], [DT_model.best_score_, RF_model.best_score_, KN_model.best_score_, LR_model.best_score_]) 
-    mpl.show() 
+    bar_colors = ['tab:red', 'tab:blue', 'tab:black', 'tab:pink']
+    mpl.bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], colors = bar_colors )
+
+    mpl.show()  
+
+    bestModel = max(DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
 
     
 
