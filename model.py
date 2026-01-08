@@ -12,7 +12,11 @@ import analysis
 from sklearn.model_selection import train_test_split 
 from sklearn.preprocessing import StandardScaler 
 from sklearn.model_selection import GridSearchCV 
-from flask import Flask, jsonify, request  
+from flask import Flask, jsonify, request   
+import sqlite3 as sql 
+
+
+
 
 
 
