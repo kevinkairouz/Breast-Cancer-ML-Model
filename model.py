@@ -12,18 +12,22 @@ if __name__ == "__main__":
     df = df.replace("M", "1") 
     df = df.replace("B", "0") 
     df = df.astype({"diagnosis": int}) 
+    df = df.drop("id", axis = 1)  
 
 
-    Y = df["diagnosis"].to_numpy()
-    X = df.drop("diagnosis", axis=1)   
+
+
+
+    # Y = df["diagnosis"].to_numpy()
+    # X = df.drop("diagnosis", axis=1)   
 
     
 
   
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, stratify=Y, random_state=42)  
+    # X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.25, stratify=Y, random_state=42)  
 
-    scaler = StandardScaler() 
-    model = LinearRegression()  
+    # scaler = StandardScaler() 
+    # model = LinearRegression()  
 
 
 
