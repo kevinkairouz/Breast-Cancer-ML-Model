@@ -24,11 +24,14 @@ EDITS: give each ML algorithm a random state = 42 to ensure consistency
 3) if possible compare each model variation using subplots of the precision, recall, score/accuracy
 """
 
-if __name__ == "__main__": 
+if __name__ == "__main__":  
+
+
+    bestModel = None
 
   
 
-    df = pd.read_csv("breast-cancer.csv")  
+    df = pd.read_csv("model/breast-cancer.csv")  
     df = df.replace("M", "1") 
     df = df.replace("B", "0") 
     df = df.astype({"diagnosis": int}) 
@@ -39,10 +42,10 @@ if __name__ == "__main__":
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, stratify=Y, random_state=42) 
 
-    RF = RandomForestClassifier()
-    DT = DecisionTreeClassifier()
+    RF = RandomForestClassifier(random_state=42)
+    DT = DecisionTreeClassifier(random_state=42)
     KN = KNeighborsClassifier()
-    LR = LogisticRegression() 
+    LR = LogisticRegression(random_state=42) 
 
     RF_params = {"n_estimators": [1,10,100,500,700,1000], "max_depth": [1,5,10,15,20,30]} 
     DT_params = {"max_depth": [1,5,10,15,20,30]} 
@@ -52,20 +55,20 @@ if __name__ == "__main__":
 
     RF_model = RandomizedSearchCV(RF, RF_params) 
     DT_model = GridSearchCV(DT, DT_params) 
-    KN_model = RandomizedSearchCV(KN, KN_params) 
+    KN_model = GridSearchCV(KN, KN_params) 
     LR_model = RandomizedSearchCV(LR, LR_params) 
 
-    # RF_model.fit(X_train, Y_train) 
+    RF_model.fit(X_train, Y_train) 
     DT_model.fit(X_train, Y_train) 
-    # KN_model.fit(X_train, Y_train) 
-    # LR_model.fit(X_train, Y_train)  
+    KN_model.fit(X_train, Y_train) 
+    LR_model.fit(X_train, Y_train)  
 
-    print(DT_model.best_params_) 
+    print(f"Decision Tree Score: {DT_model.best_score_} with {DT_model.best_params_}")  
+    print(f"Random Forest Score: {RF_model.best_score_} with {RF_model.best_params_}")
+    print(f"K Neighbors Score is {KN_model.best_score_} with {KN_model.best_params_}") 
+    print(f"Logsitic Regression score {LR_model.best_score_} with {LR_model.best_params_ }")
 
-
-
-
-
+    
 
     
 
