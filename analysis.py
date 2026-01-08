@@ -10,11 +10,15 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV 
 from sklearn.model_selection import RandomizedSearchCV 
 from sklearn.model_selection import train_test_split
-import numpy as np 
+import numpy as np  
+
+
 
 
 #TODO  
-"""
+""" 
+EDITS: give each ML algorithm a random state = 42 to ensure consistency
+ 
 1) compare the precision and recall among the models and plot it on bar chart 
 2) compare the score/accraucy and plot it on the bar chart  
 3) if possible compare each model variation using subplots of the precision, recall, score/accuracy
@@ -30,8 +34,8 @@ if __name__ == "__main__":
     df = df.astype({"diagnosis": int}) 
     df = df.drop("id", axis = 1)
 
-    Y = df["diagnosis"] 
-    X = df.drop("diagnosis", axis = 1) 
+    Y = df["diagnosis"].to_numpy()
+    X = df.drop("diagnosis", axis = 1).to_numpy()  
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, stratify=Y, random_state=42) 
 
@@ -47,14 +51,17 @@ if __name__ == "__main__":
 
 
     RF_model = RandomizedSearchCV(RF, RF_params) 
-    DT_model = RandomizedSearchCV(DT, DT_params) 
+    DT_model = GridSearchCV(DT, DT_params) 
     KN_model = RandomizedSearchCV(KN, KN_params) 
     LR_model = RandomizedSearchCV(LR, LR_params) 
 
-    RF_model.fit(X_train, Y_train) 
+    # RF_model.fit(X_train, Y_train) 
     DT_model.fit(X_train, Y_train) 
-    KN_model.fit(X_train, Y_train) 
-    LR_model.fit(X_train, Y_train) 
+    # KN_model.fit(X_train, Y_train) 
+    # LR_model.fit(X_train, Y_train)  
+
+    print(DT_model.best_params_) 
+
 
 
 
