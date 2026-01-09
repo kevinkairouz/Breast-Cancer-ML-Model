@@ -1,8 +1,8 @@
 body{
-    background-color: black;
+    background-color: linear-gradient(skyblue, whitesmoke)
 }
 h1{
-    color: whitesmoke; 
+    color: black; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 } 
