@@ -16,13 +16,7 @@ from sklearn.metrics import precision_score
 
 
 if __name__ == "__main__":  
-
-    modelNames = ["Random Forest", "Decision Tree", "K-Neighbors", "Logistic-Regression"]
-
-    bestModel = None
-
-  
-
+    
     df = pd.read_csv("breast-cancer.csv")  
     df = df.replace("M", "1") 
     df = df.replace("B", "0") 
@@ -84,22 +78,24 @@ if __name__ == "__main__":
 
 
 
-    fig, axis = mpl.subplots(2,2) 
-    axis[0,0].bar(["RForest", "DTree", "KNN", "LogReg"], [RF_model.best_score_, DT_model.best_score_, KN_model.best_score_,LR_model.best_score_], color = bar_colors )  
-    axis[0,0].set_title("Acc Score")
-    axis[0,1].bar(["RForest", "DTree", "KNN", "LogReg"], [rf_recall,dt_recall,kn_recall,lr_recall], color = bar_colors)
-    axis[0,1].set_title("Recall Score")
-    axis[1,0].bar(["RForest", "DTree", "KNN", "LogReg"], [rf_prec,dt_prec,kn_prec,lr_prec], color = bar_colors) 
-    axis[1,0].set_title("Precision Score") 
-
-    sample_indices = range(len(Y_test))
-    axis[1,1].scatter(sample_indices, Y_pred_RF, label="RForest", alpha=0.6)
-    axis[1,1].scatter(sample_indices, Y_pred_DT, label="DTree", alpha=0.6)
-    axis[1,1].scatter(sample_indices, Y_pred_KN, label="KNN", alpha=0.6)
-    axis[1,1].scatter(sample_indices, Y_pred_LR, label="LogReg", alpha=0.6)
-    axis[1,1].legend()
-    axis[1,1].set_title("Predictions") 
+    fig, axis = mpl.subplots(1,3) 
+    axis[0].bar(["RForest", "DTree", "KNN", "LogReg"], [RF_model.best_score_, DT_model.best_score_, KN_model.best_score_,LR_model.best_score_], color = bar_colors )  
+    axis[0].set_title("Acc Score")
+    axis[1].bar(["RForest", "DTree", "KNN", "LogReg"], [rf_recall,dt_recall,kn_recall,lr_recall], color = bar_colors)
+    axis[1].set_title("Recall Score")
+    axis[2].bar(["RForest", "DTree", "KNN", "LogReg"], [rf_prec,dt_prec,kn_prec,lr_prec], color = bar_colors) 
+    axis[2].set_title("Precision Score") 
     mpl.show()  
+    
+
+    # sample_indices = range(len(Y_test))
+    # axis[1,1].scatter(sample_indices, Y_pred_RF, label="RForest", alpha=0.6)
+    # axis[1,1].scatter(sample_indices, Y_pred_DT, label="DTree", alpha=0.6)
+    # axis[1,1].scatter(sample_indices, Y_pred_KN, label="KNN", alpha=0.6)
+    # axis[1,1].scatter(sample_indices, Y_pred_LR, label="LogReg", alpha=0.6)
+    # axis[1,1].legend()
+    # axis[1,1].set_title("Predictions") 
+   
 
 
 

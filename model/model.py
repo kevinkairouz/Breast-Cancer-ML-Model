@@ -1,18 +1,36 @@
 #using the model that performed the best 
-
-
 import pandas as pd   
 import analysis 
 from sklearn.model_selection import train_test_split  
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import StandardScaler 
-from sklearn.model_selection import GridSearchCV 
+from sklearn.metrics import recall_score 
+
 from flask import Flask, jsonify, request   
 import sqlite3 as sql 
 
 if __name__ == "__main__": 
 
-    model = RandomForestClassifier(random_state=42, n_estimators= 100, max_depth=15)
+    model = RandomForestClassifier(random_state=42, n_estimators= 100, max_depth=15) 
+    
+    df = pd.read_csv("breast-cancer.csv")  
+    df = df.replace("M", "1") 
+    df = df.replace("B", "0") 
+    df = df.astype({"diagnosis": int}) 
+    df = df.drop("id", axis = 1)
+
+    Y = df["diagnosis"].to_numpy()
+    X = df.drop("diagnosis", axis = 1).to_numpy()  
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, stratify=Y, random_state=42) 
+
+    model.fit(X_train, Y_train)
+    Y_pred = model.predict(X_test) 
+    recall = recall_score(Y_test, Y_pred)
+    print(f"Model Accuracy is {model.score(X_test, Y_test)} with a recall of {recall}")
+           
+
+    
+
 
 # Random Forest Score: 0.9647606019151848 with {'n_estimators': 100, 'max_depth': 15}
 
