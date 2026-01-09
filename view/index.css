@@ -5,4 +5,11 @@ h1{
     color: whitesmoke; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+} 
+.button{
+
+    color: greenyellow; 
+    width: 140px; 
+    height: 30px; 
+    border-radius: 20px;    
 }
