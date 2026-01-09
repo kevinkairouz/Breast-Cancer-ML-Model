@@ -46,4 +46,7 @@ def main(X_input):
     # return Y_user_predicted
 
      
+def run(): 
+    app_manager.run() 
 
+run()
