@@ -88,14 +88,15 @@ if __name__ == "__main__":
     axis[2].set_title("Precision Score") 
     mpl.show()  
     
-
-    # sample_indices = range(len(Y_test))
-    # axis[1,1].scatter(sample_indices, Y_pred_RF, label="RForest", alpha=0.6)
-    # axis[1,1].scatter(sample_indices, Y_pred_DT, label="DTree", alpha=0.6)
-    # axis[1,1].scatter(sample_indices, Y_pred_KN, label="KNN", alpha=0.6)
-    # axis[1,1].scatter(sample_indices, Y_pred_LR, label="LogReg", alpha=0.6)
-    # axis[1,1].legend()
-    # axis[1,1].set_title("Predictions") 
+    
+    print(classification_report(Y_test, Y_pred_DT)) 
+    print()
+    print(classification_report(Y_test, Y_pred_KN)) 
+    print()
+    print(classification_report(Y_test, Y_pred_RF))
+    print()
+    print(classification_report(Y_test, Y_pred_LR))
+    print()
    
 
 
