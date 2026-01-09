@@ -15,11 +15,7 @@ from sklearn.metrics import precision_score
 # from sklearn.metrics import precision_score
 
 
-#TODO  
-""" 
- 
-1) use subplot for 4 bar charts one for Precision, Another for recall, another for acc/score, another for something else TBD  
-"""
+
 
 if __name__ == "__main__":  
 
@@ -91,11 +87,18 @@ if __name__ == "__main__":
 
 
     fig, axis = mpl.subplots(1,3) 
-    axis[0].bar(["Random Forest", "Decision Tree", "KNeighbors", "LogisticReg"], [DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_], color = bar_colors ) 
-    axis[1].bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [rf_recall,dt_recall,kn_recall,lr_recall], color = bar_colors)
-    axis[2].bar(["Random Forest", "Decision Tree", "K Neighbors", "Logistic Regression"], [rf_prec,dt_prec,kn_prec,lr_prec], color = bar_colors) 
-    
+    axis[0].bar(["RForest", "DTree", "KNN", "LogisticReg"], [RF_model.best_score_, DT_model.best_score_, KN_model.best_score_,LR_model.best_score_], color = bar_colors )  
+    axis[0].set_title("Acc Score")
+    axis[1].bar(["RForest", "DTree", "KNN", "LogisticReg"], [rf_recall,dt_recall,kn_recall,lr_recall], color = bar_colors)
+    axis[1].set_title("Recall Score")
+    axis[2].bar(["RForest", "DTree", "KNN", "LogisticReg"], [rf_prec,dt_prec,kn_prec,lr_prec], color = bar_colors) 
+    axis[2].set_title("Precision Score")
     mpl.show()  
+
+
+
+
+
 
     
 
