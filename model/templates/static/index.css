@@ -1,5 +1,5 @@
 body{
-    background-color: linear-gradient(skyblue, whitesmoke)
+    background: linear-gradient(skyblue, whitesmoke)
 }
 h1{
     color: black; 
