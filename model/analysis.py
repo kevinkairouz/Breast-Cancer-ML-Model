@@ -1,7 +1,8 @@
 #used for algorithm analysis measuring effectiveness of each algorithm that was used 
 #and algorithm that i used in order to determine most effective algorithm to use to catch M and B cases  
 import pandas as pd
-import matplotlib.pyplot as mpl  
+import matplotlib.pyplot as mpl 
+import numpy as np
 from sklearn.linear_model import LogisticRegression 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.tree import DecisionTreeClassifier 
@@ -16,7 +17,7 @@ from sklearn.metrics import precision_score
 
 
 if __name__ == "__main__":  
-    
+
     df = pd.read_csv("breast-cancer.csv")  
     df = df.replace("M", "1") 
     df = df.replace("B", "0") 
@@ -62,7 +63,7 @@ if __name__ == "__main__":
     bar_colors = ["red","black","green","orange"]
     
     
-    bestModel = max(DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
+    bestModel = np.max(DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
 
     
     rf_recall = recall_score(Y_test, Y_pred_RF)

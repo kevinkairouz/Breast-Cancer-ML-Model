@@ -4,7 +4,6 @@ import analysis
 from sklearn.model_selection import train_test_split  
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import recall_score 
-
 from flask import Flask, jsonify, request   
 import sqlite3 as sql 
 
@@ -32,7 +31,6 @@ if __name__ == "__main__":
     
 
 
-# Random Forest Score: 0.9647606019151848 with {'n_estimators': 100, 'max_depth': 15}
 
 
     
