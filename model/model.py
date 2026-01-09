@@ -9,9 +9,9 @@ import sqlite3 as sql
 
 #TODO: 
 """
-1) create api and have it work with the prediction function 
-2) make sure that at the end of the function in python we write to our sqlite3 database 
-3) js/html/css to finish and deploy/test
+1) finish api creation/flask functionality 
+2) include in the main function for prediction to write each prediction to our sqlite3 database 
+ps. make the sqlite db global scope so function has access to it 
 """
 
 app_manager = Flask(__name__) 
