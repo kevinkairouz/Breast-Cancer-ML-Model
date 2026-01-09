@@ -63,7 +63,7 @@ if __name__ == "__main__":
     bar_colors = ["red","black","green","orange"]
     
     
-    bestModel = np.max(DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
+    bestModel = (DT_model.best_score_,RF_model.best_score_,KN_model.best_score_,LR_model.best_score_)
 
     
     rf_recall = recall_score(Y_test, Y_pred_RF)
