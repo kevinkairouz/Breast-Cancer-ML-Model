@@ -4,7 +4,7 @@ import analysis
 from sklearn.model_selection import train_test_split  
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import recall_score 
-from flask import Flask, jsonify, request   
+from flask import Flask, jsonify, request, url_for, redirect, render_template  
 import sqlite3 as sql 
 
 #TODO: 
@@ -16,7 +16,9 @@ import sqlite3 as sql
 
 app_manager = Flask(__name__) 
 
-@app_manager.route("/")
+@app_manager.route("/") 
+def showMainPage(): 
+    return render_template("index.html")
 
 @app_manager.route("/predict")
 def main(X_input):
