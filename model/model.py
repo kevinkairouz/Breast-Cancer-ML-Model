@@ -14,10 +14,12 @@ import sqlite3 as sql
 3) js/html/css to finish and deploy/test
 """
 
+app_manager = Flask(__name__) 
 
+@app_manager.route("/")
 
-
-def main():
+@app_manager.route("/predict")
+def main(X_input):
 
     model = RandomForestClassifier(random_state=42, n_estimators= 100, max_depth=15) 
     
@@ -43,4 +45,3 @@ def main():
 
      
 
-main() 
