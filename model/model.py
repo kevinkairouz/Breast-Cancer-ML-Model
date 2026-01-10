@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import recall_score 
 from flask import Flask, jsonify, request, url_for, redirect, render_template  
-import sqlite3 as sql 
+import numpy as np 
 
 
 
@@ -27,7 +27,10 @@ def showMainPage():
     return render_template("index.html")
 
 @app_manager.route("/predict", methods = ["POST"])
-def main():
+def main(): 
+
+    X_user_input = [] 
+    
 
     model = RandomForestClassifier(random_state=42, n_estimators= 100, max_depth=15) 
     
@@ -47,9 +50,28 @@ def main():
     recall = recall_score(Y_test, Y_pred)
     print(f"Model Accuracy is {model.score(X_test, Y_test)} with a recall of {recall}")
     
+    data = request.get_json()
 
-    # Y_user_predicted = model.predict(X_input)
-    # return Y_user_predicted
+    for feature in feature_names: 
+        X_user_input.append(data[feature]) 
+    
+
+    X_user_ready = np.array(X_user_input)  
+
+    Y_user_pred = model.predict([X_user_ready]) 
+
+    user_pred = Y_user_pred[0] 
+
+    res = None
+    if user_pred == 1: 
+        res = "Malignant" 
+        return jsonify({"prediction": res})
+    else:
+        res = "Benign" 
+        return jsonify({"prediction": res})
+
+        
+
 
      
 def run(): 

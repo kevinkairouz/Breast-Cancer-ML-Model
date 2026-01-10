@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
 
         // If you want to handle this with AJAX instead of form submission:
-        // e.preventDefault();
-        // handleAjaxSubmission();
+        e.preventDefault();
+        handleAjaxSubmission();
     });
 
     // Optional: Add auto-save to localStorage
