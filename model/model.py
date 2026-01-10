@@ -20,7 +20,7 @@ app_manager = Flask(__name__)
 def showMainPage(): 
     return render_template("index.html")
 
-@app_manager.route("/predict")
+@app_manager.route("/predict", methods = ["POST"])
 def main(X_input):
 
     model = RandomForestClassifier(random_state=42, n_estimators= 100, max_depth=15) 

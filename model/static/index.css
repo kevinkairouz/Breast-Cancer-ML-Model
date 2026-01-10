@@ -6,7 +6,7 @@ h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 } 
-.button{
+input[type="submit"]{
 
     color: black; 
     width: 140px; 
