@@ -7,12 +7,7 @@ from sklearn.metrics import recall_score
 from flask import Flask, jsonify, request, url_for, redirect, render_template  
 import sqlite3 as sql 
 
-#TODO: 
-"""
-1) finish api creation/flask functionality 
-2) include in the main function for prediction to write each prediction to our sqlite3 database 
-ps. make the sqlite db global scope so function has access to it 
-"""
+
 
 app_manager = Flask(__name__) 
 
