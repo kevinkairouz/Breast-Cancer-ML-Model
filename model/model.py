@@ -21,6 +21,11 @@ feature_names = [
     'concavity_worst', 'concave_points_worst', 'symmetry_worst', 'fractal_dimension_worst'
 ]
 
+@app_manager.route("/") 
+def welcomeMessage(): 
+    return "Welcome" 
+
+
 @app_manager.route("/predict", methods = ["POST"])
 def main(): 
 
