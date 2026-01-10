@@ -1,19 +1,17 @@
-//used to call flask api and show results on screen 
 
-// Form validation and interaction handling
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('cancerForm');
     const clearBtn = document.getElementById('clearBtn');
     const resultDiv = document.getElementById('result');
     const resultText = document.getElementById('resultText');
 
-    // Clear form functionality
+
     clearBtn.addEventListener('click', function() {
         if (confirm('Are you sure you want to clear all fields?')) {
             form.reset();
             resultDiv.style.display = 'none';
             
-            // Smooth scroll to top
+    
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -21,9 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission handling
+ 
     form.addEventListener('submit', function(e) {
-        // Optional: Add client-side validation
         const inputs = form.querySelectorAll('input[type="number"]');
         let isValid = true;
 
@@ -42,18 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        // Show loading state
         const submitBtn = form.querySelector('input[type="submit"]');
         const originalValue = submitBtn.value;
         submitBtn.value = 'Processing...';
         submitBtn.disabled = true;
 
-        // If you want to handle this with AJAX instead of form submission:
         e.preventDefault();
         handleAjaxSubmission();
     });
 
-    // Optional: Add auto-save to localStorage
     function saveFormData() {
         const formData = {};
         const inputs = form.querySelectorAll('input[type="number"]');
@@ -65,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('breastCancerFormData', JSON.stringify(formData));
     }
 
-    // Optional: Load saved form data
     function loadFormData() {
         const savedData = localStorage.getItem('breastCancerFormData');
         
@@ -81,13 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Auto-save on input change (uncomment to enable)
-    // form.addEventListener('input', debounce(saveFormData, 1000));
-
-    // Load saved data on page load (uncomment to enable)
-    // loadFormData();
-
-    // Utility function for debouncing
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -100,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Optional: AJAX submission handler
+
     function handleAjaxSubmission() {
         const formData = new FormData(form);
         const data = {};
@@ -134,14 +120,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
             alert('An error occurred. Please try again.');
             
-            // Reset submit button
             const submitBtn = form.querySelector('input[type="submit"]');
             submitBtn.value = 'Get Prediction';
             submitBtn.disabled = false;
         });
     }
 
-    // Add smooth scrolling to sections
     const sectionHeaders = document.querySelectorAll('.section h2');
     sectionHeaders.forEach(header => {
         header.style.cursor = 'pointer';
@@ -150,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Input validation on blur
     const numberInputs = form.querySelectorAll('input[type="number"]');
     numberInputs.forEach(input => {
         input.addEventListener('blur', function() {
@@ -163,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Sample data loader (for testing purposes)
 function loadSampleData() {
     const sampleData = {
         radius_mean: 17.99,
@@ -206,5 +188,4 @@ function loadSampleData() {
     });
 }
 
-// Add sample data button to console
 console.log('To load sample data, run: loadSampleData()');
