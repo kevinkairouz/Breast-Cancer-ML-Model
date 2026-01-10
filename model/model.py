@@ -21,11 +21,6 @@ feature_names = [
     'concavity_worst', 'concave_points_worst', 'symmetry_worst', 'fractal_dimension_worst'
 ]
 
-
-@app_manager.route("/") 
-def showMainPage(): 
-    return render_template("index.html")
-
 @app_manager.route("/predict", methods = ["POST"])
 def main(): 
 
