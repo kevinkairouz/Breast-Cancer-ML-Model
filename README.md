@@ -15,7 +15,7 @@ A machine learning-powered web application for breast cancer diagnosis predictio
 
 ## Project Structure
 
-### Branch: `ml-analysis` (Python-Only)
+### Branch: `model` (Python-Only)
 Core machine learning analysis and model development
 * `analysis.py` - Algorithm comparison and hyperparameter tuning
 * `breast-cancer.csv` - Wisconsin Breast Cancer Dataset (569 samples, 30 features)
