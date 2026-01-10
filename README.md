@@ -1,6 +1,6 @@
 # Breast Cancer Detection System
 
-A machine learning-powered web application for breast cancer diagnosis prediction using the Wisconsin Breast Cancer Dataset. Features comprehensive algorithm comparison, hyperparameter tuning, and an interactive web interface built with Flask.
+A machine learning application for breast cancer diagnosis prediction using the Wisconsin Breast Cancer Dataset. Features comprehensive algorithm comparison, hyperparameter tuning, and an API built with Flask.
 
 ## Features
 
@@ -8,7 +8,6 @@ A machine learning-powered web application for breast cancer diagnosis predictio
 * **Algorithm Comparison**: Systematic evaluation of 4 ML algorithms (RandomForest, DecisionTree, KNN, LogisticRegression)
 * **Hyperparameter Optimization**: GridSearchCV and RandomizedSearchCV for model tuning
 * **Real-time Predictions**: Interactive web interface for instant diagnosis predictions
-* **Professional UI**: Responsive gradient design with smooth animations and form validation
 * **ML Analysis**: Algorithm Analysis for all 4 ML algorithms with visualizations offered for the following (Recall, Score, Precision)
 
 
@@ -20,13 +19,10 @@ Core machine learning analysis and model development
 * `analysis.py` - Algorithm comparison and hyperparameter tuning
 * `breast-cancer.csv` - Wisconsin Breast Cancer Dataset (569 samples, 30 features)
 
-### Branch: `main` (Full-Stack Application)
+### Branch: `main` (with api)
 Complete web application with Flask API
 * `model.py` - Flask REST API with `/predict` endpoint
 * `analysis.py` - ML algorithm evaluation script
-* `templates/index.html` - Professional form interface with 30 input fields
-* `static/index.css` - Gradient styling with responsive design
-* `static/index.js` - AJAX submission, form validation, sample data loader
 * `breast-cancer.csv` - Training dataset
 
 ## Machine Learning Components
@@ -62,26 +58,6 @@ Complete web application with Flask API
   * NumPy array conversion for model input
 * **Model Training**: On-demand training within `/predict` route (development pattern)
 * **Response Format**: `{"prediction": "Malignant"}` or `{"prediction": "Benign"}`
-
-### Frontend Components:
-* **HTML Structure**:
-  * Organized form with 3 sections: Mean Features, Standard Error Features, Worst Features
-  * 30 input fields with proper names matching `feature_names`
-  * Clear button, submit button, result display area
-  * Semantic HTML with accessibility considerations
-* **CSS Styling**:
-  * Purple gradient background (`linear-gradient(135deg, #667eea 0%, #764ba2 100%)`)
-  * Responsive grid layout (`auto-fit, minmax(250px, 1fr)`)
-  * Smooth animations and hover effects
-  * Mobile-responsive with media queries
-  * Loading states and transitions
-* **JavaScript Features**:
-  * AJAX submission with `fetch()` API
-  * Form validation with visual feedback (red/green borders)
-  * Sample data loader (`loadSampleData()` function)
-  * Error handling and loading states
-  * Smooth scrolling to results
-  * Button state management during submission
 
 ## Data Processing Pipeline
 
@@ -122,14 +98,6 @@ python model.py
 ```
 Navigate to: `http://127.0.0.1:5000/`
 
-## Usage
-
-### Web Interface:
-1. Open browser to `http://127.0.0.1:5000/`
-2. Fill in all 30 feature measurements (or use console: `loadSampleData()`)
-3. Click "Get Prediction"
-4. View result: "Malignant" or "Benign"
-
 ### Sample Data (Malignant Case):
 ```
 17.99, 10.38, 122.8, 1001, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 0.07871,
@@ -137,21 +105,13 @@ Navigate to: `http://127.0.0.1:5000/`
 25.38, 17.33, 184.6, 2019, 0.1622, 0.6656, 0.7119, 0.2654, 0.4601, 0.1189
 ```
 
-### Console Commands:
-```javascript
-// Load sample malignant data
-loadSampleData()
-```
 
 ## Advanced Features
 
 * **Systematic Model Comparison**: Automated evaluation of 4 algorithms with hyperparameter search
 * **Visual Performance Analysis**: Matplotlib bar charts comparing accuracy, recall, and precision
-* **Production-Ready Form**: 30-field responsive form with validation and error handling
-* **Real-time Feedback**: Loading states, animations, and instant result display
 * **Optimized Model**: Selected RandomForest based on comprehensive evaluation
-* **AJAX Architecture**: No page refreshes, smooth user experience
-* **Error Recovery**: Graceful handling of submission failures with user feedback
+
 
 ## Technical Details
 
@@ -166,9 +126,3 @@ loadSampleData()
 * **Response Format**: JSON with "prediction" key
 * **HTTP Method**: POST to `/predict`
 * **Content-Type**: `application/json`
-
-### Frontend Technologies:
-* **JavaScript**: 
-* **Fetch API**: Modern AJAX requests
-* **CSS Grid**: Responsive layout
-* **CSS Animations**: Smooth transitions and loading states
